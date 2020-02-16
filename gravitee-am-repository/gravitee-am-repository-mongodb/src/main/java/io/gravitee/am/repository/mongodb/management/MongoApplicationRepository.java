@@ -377,6 +377,7 @@ public class MongoApplicationRepository extends AbstractManagementMongoRepositor
         accountSettings.setLoginAttemptsResetTime(accountSettingsMongo.getLoginAttemptsResetTime());
         accountSettings.setAccountBlockedDuration(accountSettingsMongo.getAccountBlockedDuration());
         accountSettings.setCompleteRegistrationWhenResetPassword(accountSettingsMongo.isCompleteRegistrationWhenResetPassword());
+        accountSettings.setSendRecoverAccountEmail(accountSettingsMongo.isSendRecoverAccountEmail());
         return accountSettings;
     }
 
@@ -392,6 +393,7 @@ public class MongoApplicationRepository extends AbstractManagementMongoRepositor
         accountSettingsMongo.setLoginAttemptsResetTime(accountSettings.getLoginAttemptsResetTime());
         accountSettingsMongo.setAccountBlockedDuration(accountSettings.getAccountBlockedDuration());
         accountSettingsMongo.setCompleteRegistrationWhenResetPassword(accountSettings.isCompleteRegistrationWhenResetPassword());
+        accountSettingsMongo.setSendRecoverAccountEmail(accountSettings.isSendRecoverAccountEmail());
         return accountSettingsMongo;
     }
 

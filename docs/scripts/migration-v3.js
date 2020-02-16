@@ -44,12 +44,25 @@ db.getCollection("forms").updateMany({"domain": "admin"}, {
     "$set": {"referenceId": "DEFAULT", "referenceType": "ORGANIZATION"}
 });
 
-// Migrate user consent forms content
+// Migrate forms content
 db.getCollection("forms")
     .find({"template": "oauth2_user_consent"})
     .forEach(function (form) {
         var content = form.content.replace("@{authorize}","@{consent}");
         db.getCollection("forms").update({_id: form._id}, { "$set": { "content" : content } });
+    });
+
+// Migrate emails content
+db.getCollection("emails")
+    .find({})
+    .forEach(function (email) {
+        var content = '';
+        if (email.template === "registration_confirmation") {
+            content = email.content.replace("${registrationUrl}","${url}");
+        } else if (email.template === "reset_password") {
+            content = email.content.replace("${resetPasswordUrl}","${url}");
+        }
+        db.getCollection("emails").update({_id: email._id}, { "$set": { "content" : content } });
     });
 
 // Admin reporters can be deleted in favor of internal reporter used for organization audits.

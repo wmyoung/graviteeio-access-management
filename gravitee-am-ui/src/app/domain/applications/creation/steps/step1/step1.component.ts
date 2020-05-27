@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'application-creation-step1',
@@ -50,6 +50,13 @@ export class ApplicationCreationStep1Component {
       type: 'SERVICE',
       description: 'Machine-to-Machine apps',
       subDescription : 'e.g : Shell script, daemon, CLI'
+    },
+    {
+      name: 'Resource Server',
+      icon: 'folder_shared',
+      type: 'RESOURCE_SERVER',
+      description: 'Resource Server apps',
+      subDescription : 'e.g : API, traditional Apps'
     }];
 
   constructor() {}
